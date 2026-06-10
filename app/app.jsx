@@ -6,6 +6,7 @@
   const Y = window.YTM;
   const { Button, Badge, Avatar } = window.YTMHomesMoreDesignSystem_3b4e5e;
   const I = (n, e) => <i data-lucide={n} {...(e || {})}></i>;
+  const Wa = window.YTMW.Wa;
 
   // ---- accent palettes (light + warm-dark) ----
   const ACCENTS = {
@@ -91,9 +92,8 @@
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 20, fontFamily: "var(--font-body)", fontSize: "var(--text-sm)" }}>
-          <a href={"https://wa.me/" + c.whatsapp.replace(/[^\d]/g, "")} target="_blank" rel="noopener" style={{ color: "var(--text-body)", textDecoration: "none", display: "inline-flex", gap: 6, alignItems: "center" }}><span style={{ width: 15, height: 15, display: "inline-flex" }}>{I("message-circle")}</span>WhatsApp</a>
+          <a href={"https://wa.me/" + c.whatsapp.replace(/[^\d]/g, "")} target="_blank" rel="noopener" style={{ color: "var(--text-body)", textDecoration: "none", display: "inline-flex", gap: 6, alignItems: "center" }}><span style={{ width: 15, height: 15, display: "inline-flex" }}><Wa /></span>WhatsApp</a>
           <a href={"mailto:" + c.email} style={{ color: "var(--text-body)", textDecoration: "none" }}>{c.email}</a>
-          <a href="Design System.html" target="_blank" style={{ color: "var(--accent-deep)", textDecoration: "none", display: "inline-flex", gap: 6, alignItems: "center", fontWeight: 600 }}>Design system <span style={{ width: 14, height: 14, display: "inline-flex" }}>{I("arrow-up-right")}</span></a>
         </div>
       </footer>
     );
@@ -109,7 +109,7 @@
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-base)", lineHeight: 1.6, color: "var(--text-muted)", margin: "0 0 18px" }}>
             Thank you — we’ll confirm your dates for <b style={{ color: "var(--text-strong)" }}>{p ? p.name : "your stay"}</b> by WhatsApp within the hour. A warm welcome awaits.
           </p>
-          <div style={{ fontFamily: "var(--font-script)", fontSize: 30, color: "var(--accent-deep)", marginBottom: 20 }}>Yllka &amp; family</div>
+          <div style={{ fontFamily: "var(--font-script)", fontSize: 30, color: "var(--accent-deep)", marginBottom: 20 }}>Lorik &amp; Leart</div>
           <Button variant="primary" fullWidth onClick={onClose}>Back to the board</Button>
         </div>
       </div>

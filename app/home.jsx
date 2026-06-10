@@ -40,7 +40,7 @@
             <SectionTitle
               eyebrow={Y.collections.saranda.eyebrow}
               title="Saranda, Albania"
-              count="3 stays"
+              count={Y.collections.saranda.letLabel}
             />
             <div className="home-cards home-cards-3">
               {saranda.map((p) => (
@@ -51,7 +51,7 @@
             <SectionTitle
               eyebrow={Y.collections.prishtina.eyebrow}
               title="Prishtina, Kosovo"
-              count="2 homes"
+              count={Y.collections.prishtina.letLabel}
             />
             <div className="home-cards home-cards-2">
               {prishtina.map((p) => (

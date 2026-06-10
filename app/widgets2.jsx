@@ -8,7 +8,7 @@
   const W = window.YTMW;
   const DSC = window.YTMHomesMoreDesignSystem_3b4e5e;
   const { Button, Badge, AmenityItem, Tag } = DSC;
-  const { BentoCard, Photo, eyebrow, serif, body, script, I } = W;
+  const { BentoCard, Photo, eyebrow, serif, body, script, I, Wa } = W;
 
   // ---- GALLERY: big slot + two small slots ------------------------
   function GalleryTile({ p }) {
@@ -209,20 +209,20 @@
     );
   }
 
-  // ---- BOOKING (price + CTA) --------------------------------------
+  // ---- BOOKING (CTA) ----------------------------------------------
   function BookingTile({ p, onBook }) {
+    const c = window.YTM.collections[p.collection];
     return (
       <BentoCard tone="ink" pad={24} style={{ justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "var(--text-3xl)", color: "#fff" }}>€{p.price}</span>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "rgba(255,255,255,.6)" }}>/ night</span>
-          <span style={{ marginLeft: "auto" }}><Badge tone="success">Direct rate</Badge></span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "var(--text-xl)", color: "#fff" }}>{c.letLabel}</span>
+          <span style={{ marginLeft: "auto" }}><Badge tone="success">Direct booking</Badge></span>
         </div>
         <p style={{ ...body("var(--text-sm)"), color: "rgba(255,255,255,.72)", margin: "12px 0 16px" }}>You won’t be charged yet — we’ll confirm your dates by WhatsApp.</p>
         <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
           <Button variant="primary" fullWidth iconRight={I("arrow-right")} onClick={onBook}>Request these dates</Button>
           <a href={"https://wa.me/" + window.YTM.contact.whatsapp.replace(/[^\d]/g, "")} data-no-drag target="_blank" rel="noopener" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, color: "rgba(255,255,255,.82)", fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", textDecoration: "none", whiteSpace: "nowrap" }}>
-            <span style={{ display: "inline-flex", width: 15, height: 15 }}>{I("message-circle")}</span>Ask a question
+            <span style={{ display: "inline-flex", width: 15, height: 15 }}><Wa /></span>Ask a question
           </a>
         </div>
       </BentoCard>

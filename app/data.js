@@ -15,6 +15,7 @@
       tagline: "Sunny coastal stays above the blue horizon.",
       mood: "warm · coastal · slow",
       wash: "sunrise",
+      letLabel: "Short-term stays · Airbnb",
       count: 3,
       pinX: 30, pinY: 78, // position on the stylised map (%)
     },
@@ -26,6 +27,7 @@
       tagline: "Calm private bases, close to daily life.",
       mood: "urban · private · grounded",
       wash: "dusk",
+      letLabel: "Long-term rentals",
       count: 2,
       pinX: 58, pinY: 30,
     },
@@ -93,7 +95,7 @@
         { title: "Evening", text: "Sunset from the castle, dinner of grilled fish on the promenade." },
       ],
       review: {
-        quote: "Spotless, calm and the sunset from the terrace is unreal. Yllka thought of everything — it felt like staying with friends.",
+        quote: "Spotless, calm and the sunset from the terrace is unreal. Our hosts thought of everything — it felt like staying with friends.",
         name: "Marta R.",
         meta: "Stayed July 2025 · 5 nights",
         tone: "sage",
@@ -322,12 +324,13 @@
   // ---- Our story (homepage) ----------------------------------------
   const story = {
     eyebrow: "Our story",
-    title: "One family, two shores.",
+    title: "A name built from ours.",
     paragraphs: [
-      "Y.T.M. began with a single apartment above Bougainvillea Bay — a place we kept for summers, lent to friends, and slowly learned to share. One door became five: three sunny stays on the Saranda coast, and two grounded homes in Prishtina, where our family’s story started.",
-      "We look after every home ourselves — cleaned and checked before each arrival, answered personally, cared for like our own. Because it is our own. The warmth of a host, the ease of a hotel, and a family on the other end of every message.",
+      "Y.T.M. is our parents — Ylber and Teuta, and the initial of our family name. They are the investors behind every property here: a lifetime of careful work, built into lovely homes they have always kept with care.",
+      "Our mother Teuta, an architect, helped design these properties down to their very foundations — which is why each one feels considered, solid and quietly beautiful.",
+      "Today the two of us — Lorik and Leart, their sons — manage the spaces for rent: the Saranda apartments as short-term stays on Airbnb, and the Prishtina homes as long-term rentals. More family properties are taking shape, and they’ll join the board when they’re ready.",
     ],
-    signoff: "Yllka & family",
+    signoff: "Lorik & Leart",
   };
 
   window.YTM = {
@@ -343,7 +346,7 @@
       whatsapp: "+355 69 000 0000",
       email: "stay@ytmhomes.com",
       instagram: "@ytm.homes",
-      host: "Yllka & family",
+      host: "Lorik & Leart",
     },
   };
 })();
