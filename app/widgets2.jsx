@@ -41,7 +41,6 @@
         <p style={{ ...body("var(--text-md)"), color: "var(--text-body)" }}>{p.mood}</p>
         <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginTop: 4 }}>
           {p.badges.map((b, i) => <Badge key={i} tone={b.tone}>{b.label}</Badge>)}
-          <Badge tone="sun">★ {p.rating} · {p.reviews}</Badge>
         </div>
       </BentoCard>
     );
@@ -195,12 +194,9 @@
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#FF5A5F", fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "var(--text-sm)" }}>
             <span style={{ display: "inline-flex", width: 20, height: 20 }}>{I("badge-check")}</span>Airbnb listing
           </span>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", fontWeight: 600, color: "var(--ink-800)" }}>
-            <span style={{ display: "inline-flex", width: 14, height: 14, color: "var(--sun-600)" }}>{I("star", { fill: "currentColor" })}</span>{p.rating}
-          </span>
         </div>
         <div>
-          <p style={body("var(--text-sm)")}>See the full listing, calendar and {p.reviews} guest reviews on Airbnb — or book direct with us and save the platform fee.</p>
+          <p style={body("var(--text-sm)")}>See the full listing, calendar and guest reviews on Airbnb, or book direct with us and save the platform fee.</p>
         </div>
         <a href={p.airbnb} data-no-drag target="_blank" rel="noopener" style={{ textDecoration: "none" }}>
           <Button variant="ghost" fullWidth iconRight={I("arrow-up-right")}>View on Airbnb</Button>
@@ -214,8 +210,8 @@
     const c = window.YTM.collections[p.collection];
     return (
       <BentoCard tone="ink" pad={24} style={{ justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "var(--text-xl)", color: "#fff" }}>{c.letLabel}</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "var(--text-lg)", color: "#fff" }}>{c.letLabel.split(" · ")[0]}</span>
           <span style={{ marginLeft: "auto" }}><Badge tone="success">Direct booking</Badge></span>
         </div>
         <p style={{ ...body("var(--text-sm)"), color: "rgba(255,255,255,.72)", margin: "12px 0 16px" }}>You won’t be charged yet — we’ll confirm your dates by WhatsApp.</p>

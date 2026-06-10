@@ -278,7 +278,7 @@
       reviews: 33,
       wash: "dusk",
       accent: "stone",
-      badges: [{ label: "Central", tone: "neutral" }, { label: "Walk everywhere", tone: "sea" }],
+      badges: [{ label: "Commercial space", tone: "neutral" }, { label: "Central", tone: "sea" }],
       airbnb: "https://airbnb.com",
       description:
         "Our most central property — a polished base right in Prishtina’s commercial heart. Step out to cafés, offices and the boulevard. Ideal for business stays and city weekends.",

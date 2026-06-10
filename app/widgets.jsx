@@ -173,17 +173,9 @@
         <div style={{ position: "absolute", top: 14, left: 14, display: "flex", gap: 7 }}>
           {p.badges.slice(0, tall ? 2 : 1).map((b, i) => <Badge key={i} tone={b.tone} size="sm">{b.label}</Badge>)}
         </div>
-        <span style={{ position: "absolute", top: 12, right: 12, display: "inline-flex", alignItems: "center", gap: 4, padding: "5px 10px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", fontWeight: 600, color: "var(--ink-800)" }}>
-          <span style={{ display: "inline-flex", width: 12, height: 12, color: "var(--sun-600)" }}>{I("star", { fill: "currentColor" })}</span>{p.rating}
-        </span>
         <div style={{ position: "relative", padding: 18, color: "#fff", display: "flex", flexDirection: "column", gap: 6 }}>
           <h3 style={{ ...serif("var(--text-xl)"), color: "#fff", margin: 0 }}>{p.name}</h3>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "rgba(255,255,255,.9)", margin: 0, lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: tall ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{tall ? p.mood : p.glance}</p>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginTop: 2 }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "rgba(255,255,255,.85)", whiteSpace: "nowrap" }}>
-              <span style={{ display: "inline-flex", width: 13, height: 13 }}>{I(p.commercial ? "briefcase" : "users")}</span>{p.commercial ? "Commercial space" : p.sleeps}
-            </span>
-          </div>
         </div>
       </BentoCard>
     );
