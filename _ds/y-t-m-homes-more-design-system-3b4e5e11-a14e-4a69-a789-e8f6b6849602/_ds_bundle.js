@@ -1169,7 +1169,7 @@ function GuestGuide() {
       opacity: 0.3
     }
   }), /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/logo/ytm-mark.png",
+    src: "assets/logo/ytm-mark.png",
     alt: "Y.T.M.",
     style: {
       position: 'absolute',
@@ -1671,7 +1671,7 @@ function Homepage({
       aspectRatio: '1 / 1'
     }
   }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/photography/saranda-sunset-terrace.png",
+    src: "assets/photography/saranda-sunset-terrace.png",
     alt: "Bougainvillea Bay at golden hour",
     style: {
       width: '100%',
@@ -2097,7 +2097,7 @@ function ListingPage({
       overflow: 'hidden'
     }
   }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/photography/saranda-sunset-terrace.png",
+    src: "assets/photography/saranda-sunset-terrace.png",
     alt: "Sea view",
     style: {
       width: '100%',
@@ -2599,7 +2599,7 @@ function SiteHeader({
       alignItems: 'center'
     }
   }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/logo/ytm-mark.png",
+    src: "assets/logo/ytm-mark.png",
     alt: "Y.T.M. Homes & More",
     style: {
       height: 34
@@ -2688,7 +2688,7 @@ function SiteFooter() {
       gap: 40
     }
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/logo/ytm-mark.png",
+    src: "assets/logo/ytm-mark.png",
     alt: "Y.T.M.",
     style: {
       height: 38,
