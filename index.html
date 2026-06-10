@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Y.T.M. Homes & More</title>
+
+<!-- Design system tokens, fonts (Newsreader / Hanken Grotesk / Sacramento) + base -->
+<link rel="stylesheet" href="_ds/y-t-m-homes-more-design-system-3b4e5e11-a14e-4a69-a789-e8f6b6849602/styles.css" />
+<!-- Optional display-font alternatives for the Tweaks panel -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" />
+
+<style>
+  html, body { margin: 0; }
+  body { background: var(--surface-page); }
+  em { font-style: italic; }
+
+  /* ---------- BENTO GRID ---------- */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: var(--bento-row, 200px);
+    grid-auto-flow: row dense;
+    gap: var(--bento-gap, 18px);
+  }
+  .bento-tile {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--tile-radius, 24px);
+    transition: opacity .2s var(--ease-out);
+  }
+  .bento-tile > .ytm-lift,
+  .bento-tile > div:not(.bento-grip) { flex: 1 1 auto; min-height: 0; }
+  .bento-tile.is-dragging { opacity: .45; }
+  .bento.is-dragging-board image-slot { pointer-events: none; }
+  .bento.is-dragging-board .bento-tile { cursor: grabbing; }
+
+  /* drag handle */
+  .bento-grip {
+    position: absolute; top: 7px; left: 50%; transform: translateX(-50%);
+    z-index: 30; display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 20px; border-radius: 999px;
+    background: var(--glass, rgba(255,255,255,.82)); backdrop-filter: blur(8px);
+    border: 1px solid var(--border-soft); box-shadow: var(--shadow-xs);
+    color: var(--text-muted); cursor: grab; opacity: 0;
+    transition: opacity .18s var(--ease-out);
+  }
+  .bento-tile:hover .bento-grip { opacity: .92; }
+  .bento-grip:active { cursor: grabbing; }
+  .bento-grip i { width: 15px; height: 15px; transform: rotate(90deg); }
+
+  /* hover lift for interactive cards */
+  .ytm-lift { will-change: transform; }
+  .ytm-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg) !important; }
+
+  /* ---------- image-slot on-brand styling ---------- */
+  image-slot {
+    --slot-wash: var(--wash-coast);
+    border-radius: inherit;
+  }
+  image-slot::part(frame) {
+    background: var(--slot-wash);
+    box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent-deep) 38%, transparent);
+    border-radius: inherit;
+  }
+  /* dashed inset ring drawn on the frame so empty slots read as drop zones */
+  image-slot::part(empty) {
+    color: var(--accent-deep);
+    font-family: var(--font-body);
+    gap: 10px;
+    opacity: .85;
+  }
+  image-slot::part(empty)::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1.5px dashed color-mix(in srgb, var(--accent-deep) 45%, transparent);
+    border-radius: 16px;
+    pointer-events: none;
+  }
+
+  /* ---------- chrome ---------- */
+  .ytm-bar {
+    position: sticky; top: 0; z-index: 40;
+    max-width: var(--content-max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 14px var(--footer-x, 28px) 6px;
+  }
+  .ytm-pill {
+    display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px;
+    border-radius: 999px; background: var(--glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--border-soft); box-shadow: var(--shadow-sm);
+    font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600;
+    color: var(--text-strong); cursor: pointer;
+  }
+  .ytm-bar-mid {
+    display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px;
+    border-radius: 999px; background: var(--glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--border-soft); box-shadow: var(--shadow-sm); min-width: 0;
+  }
+  .ytm-bar-mid > span { white-space: nowrap; }
+  .ytm-icon {
+    width: 40px; height: 40px; border-radius: 999px; display: inline-flex;
+    align-items: center; justify-content: center; background: var(--glass);
+    backdrop-filter: blur(10px); border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-sm); cursor: pointer; color: var(--text-body);
+  }
+  .ytm-pill i, .ytm-icon i { width: 16px; height: 16px; }
+  .ytm-pill:hover, .ytm-icon:hover { background: var(--surface-card); }
+
+  /* ---------- booking modal ---------- */
+  .ytm-ov {
+    position: fixed; inset: 0; background: rgba(46,42,36,.5); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center; z-index: 80; padding: 24px;
+    animation: ytmfade .24s var(--ease-out);
+  }
+  .ytm-modal {
+    max-width: 430px; width: 100%; text-align: center; background: var(--surface-card);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); padding: 32px;
+    animation: ytmpop .28s var(--ease-out);
+  }
+  @keyframes ytmfade { from { opacity: 0; } }
+  @keyframes ytmpop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+
+  /* ---------- drag hint ---------- */
+  .ytm-hint {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 60;
+    display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px;
+    border-radius: 999px; background: var(--ink-900); color: var(--cream);
+    font-family: var(--font-body); font-size: var(--text-sm); box-shadow: var(--shadow-lg);
+    animation: ytmrise .4s var(--ease-out);
+  }
+  .ytm-hint i { width: 16px; height: 16px; }
+  @keyframes ytmrise { from { opacity: 0; transform: translate(-50%, 12px); } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1080px) { .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px)  { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 540px) {
+    .bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .bento .bento-tile { grid-column: auto !important; grid-row: auto !important; min-height: 230px; }
+    .ytm-bar-mid .nm-hide { display: none; }
+  }
+</style>
+</head>
+<body class="ytm ytm-root">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- design system bundle + image slots (plain JS) -->
+<script src="_ds/y-t-m-homes-more-design-system-3b4e5e11-a14e-4a69-a789-e8f6b6849602/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<script src="app/data.js"></script>
+
+<!-- app (JSX) -->
+<script type="text/babel" src="app/bento.jsx"></script>
+<script type="text/babel" src="app/widgets.jsx"></script>
+<script type="text/babel" src="app/widgets2.jsx"></script>
+<script type="text/babel" src="app/home.jsx"></script>
+<script type="text/babel" src="app/detail.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app/app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* ============================================================
+   Y.T.M. Homes & More — EFFECTS: shadows, blur, motion, gradients
+   Shadows are warm-tinted and soft (sun-lit, not hard UI drop).
+   ============================================================ */
+:root {
+  /* Soft, warm-tinted elevation (tinted with charcoal, low opacity) */
+  --shadow-xs:  0 1px 2px rgba(46, 42, 36, 0.06);
+  --shadow-sm:  0 2px 8px rgba(46, 42, 36, 0.06);
+  --shadow-md:  0 6px 20px rgba(46, 42, 36, 0.08);
+  --shadow-lg:  0 16px 40px rgba(46, 42, 36, 0.10);
+  --shadow-xl:  0 28px 64px rgba(46, 42, 36, 0.14);
+  /* Image / card lift — slightly warmer */
+  --shadow-card: 0 10px 30px rgba(74, 58, 40, 0.09);
+  --shadow-focus: 0 0 0 3px rgba(84, 129, 150, 0.35);  /* sea focus ring */
+
+  /* Blur (used over photography for glass nav / overlay chips) */
+  --blur-sm: 6px;
+  --blur-md: 14px;
+
+  /* Image protection gradient (dark scrim over hero photos for text) */
+  --scrim-bottom: linear-gradient(to top, rgba(32,30,26,0.72) 0%, rgba(32,30,26,0.30) 38%, rgba(32,30,26,0) 70%); /* @kind other */
+  --scrim-full:   linear-gradient(180deg, rgba(32,30,26,0.30), rgba(32,30,26,0.55)); /* @kind other */
+
+  /* Warm coastal wash gradients (decorative section backgrounds) */
+  --wash-sunrise: linear-gradient(135deg, var(--sun-100) 0%, var(--shell) 60%, var(--cream) 100%);
+  --wash-coast:   linear-gradient(135deg, var(--sea-50) 0%, var(--cream) 55%, var(--sage-50) 100%);
+  --wash-dusk:    linear-gradient(135deg, var(--lavender-100) 0%, var(--cream) 70%);
+
+  /* Motion — calm, gentle. No bounces. */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-in-out:cubic-bezier(0.45, 0, 0.2, 1); /* @kind other */
+  --dur-fast:   140ms; /* @kind other */
+  --dur-base:   240ms; /* @kind other */
+  --dur-slow:   420ms; /* @kind other */
+  --transition-base: all var(--dur-base) var(--ease-out);
+}

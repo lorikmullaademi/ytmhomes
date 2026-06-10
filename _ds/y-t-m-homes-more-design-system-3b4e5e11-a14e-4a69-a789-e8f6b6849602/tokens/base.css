@@ -1,0 +1,36 @@
+/* ============================================================
+   Y.T.M. Homes & More — BASE ELEMENT DEFAULTS
+   Lightweight, opt-in resets. Applied to page canvas + prose.
+   ============================================================ */
+.ytm-root, body.ytm {
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ytm-root h1, .ytm-root h2, .ytm-root h3, .ytm-root h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  color: var(--text-strong);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  margin: 0;
+}
+.ytm-root h1 { font-weight: var(--weight-light); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
+
+.ytm-root p { margin: 0; }
+.ytm-root a { color: var(--text-link); text-decoration: none; }
+.ytm-root a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-xs);
+}
+
+/* Selection */
+::selection { background: var(--sun-200); color: var(--ink-900); }

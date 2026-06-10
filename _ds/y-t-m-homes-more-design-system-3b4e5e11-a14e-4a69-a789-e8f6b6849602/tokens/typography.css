@@ -1,0 +1,61 @@
+/* ============================================================
+   Y.T.M. Homes & More — TYPOGRAPHY TOKENS
+   Display: Newsreader (warm serif) · Body/UI: Hanken Grotesk
+   Accent: Sacramento (signature script — sparing use only)
+   ============================================================ */
+:root {
+  /* Families */
+  --font-display: 'Newsreader', 'Georgia', serif;
+  --font-body:    'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script:  'Sacramento', 'Snell Roundhand', cursive;
+
+  /* Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Type scale — fluid-friendly fixed steps (1.20 minor third-ish) */
+  --text-2xs:  0.6875rem;  /* 11px — legal / micro labels (print only) */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px — body default */
+  --text-md:   1.125rem;   /* 18px — comfortable body / lead-in */
+  --text-lg:   1.375rem;   /* 22px */
+  --text-xl:   1.75rem;    /* 28px */
+  --text-2xl:  2.25rem;    /* 36px */
+  --text-3xl:  3rem;       /* 48px */
+  --text-4xl:  3.75rem;    /* 60px */
+  --text-5xl:  4.75rem;    /* 76px — hero display */
+
+  /* Line heights */
+  --leading-tight:   1.08;
+  --leading-snug:    1.22;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0em;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.14em;   /* eyebrow / overline uppercase */
+
+  /* ---- Semantic text-role aliases ---- */
+  --type-display-font:   var(--font-display);
+  --type-display-weight: var(--weight-light);
+  --type-heading-font:   var(--font-display);
+  --type-heading-weight: var(--weight-regular);
+  --type-body-font:      var(--font-body);
+  --type-body-weight:    var(--weight-regular);
+  --type-eyebrow-font:   var(--font-body);
+  --type-eyebrow-weight: var(--weight-semibold);
+}
+
+/* ---- Optional convenience classes (cards/specimens) ---- */
+.ytm-display { font-family: var(--font-display); font-weight: var(--weight-light); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--text-strong); }
+.ytm-heading { font-family: var(--font-display); font-weight: var(--weight-regular); line-height: var(--leading-snug); letter-spacing: var(--tracking-snug); color: var(--text-strong); }
+.ytm-eyebrow { font-family: var(--font-body); font-weight: var(--weight-semibold); font-size: var(--text-xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--brand-primary-deep); }
+.ytm-body    { font-family: var(--font-body); font-weight: var(--weight-regular); font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--text-body); }
+.ytm-script  { font-family: var(--font-script); font-weight: 400; color: var(--text-soft); }

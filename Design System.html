@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Y.T.M. Homes & More — Design System</title>
+
+<link rel="stylesheet" href="_ds/y-t-m-homes-more-design-system-3b4e5e11-a14e-4a69-a789-e8f6b6849602/styles.css" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="_ds/y-t-m-homes-more-design-system-3b4e5e11-a14e-4a69-a789-e8f6b6849602/_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  html, body { margin: 0; background: var(--surface-page); color: var(--text-body); }
+  * { box-sizing: border-box; }
+  a { color: inherit; }
+
+  .ds-shell { max-width: 1080px; margin: 0 auto; padding: 0 28px 140px; }
+
+  /* ---- top brand bar ---- */
+  .ds-top {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--cream) 86%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ds-top-in {
+    max-width: 1080px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .ds-top img { height: 30px; display: block; }
+  .ds-top a.back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600;
+    color: var(--text-body); padding: 9px 16px; border-radius: 999px;
+    border: 1px solid var(--border-soft); background: var(--white); box-shadow: var(--shadow-xs);
+    transition: all .2s var(--ease-out);
+  }
+  .ds-top a.back:hover { background: var(--shell); transform: translateY(-1px); }
+  .ds-top a.back i { width: 15px; height: 15px; }
+
+  /* ---- hero ---- */
+  .ds-hero { padding: 72px 0 28px; }
+  .eyebrow {
+    font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs);
+    letter-spacing: var(--tracking-caps); text-transform: uppercase;
+    color: var(--brand-primary-deep); margin: 0 0 18px;
+  }
+  .ds-hero h1 {
+    font-family: var(--font-display); font-weight: 300; line-height: 1.04;
+    letter-spacing: -.02em; font-size: clamp(2.6rem, 6vw, var(--text-5xl));
+    color: var(--text-strong); margin: 0 0 22px; max-width: 16ch;
+  }
+  .ds-hero h1 em { font-style: italic; color: var(--sage-700); }
+  .ds-hero p.lead {
+    font-family: var(--font-body); font-size: var(--text-md); line-height: 1.6;
+    color: var(--text-body); max-width: 58ch; margin: 0;
+  }
+  .ds-script { font-family: var(--font-script); color: var(--text-soft); }
+
+  /* ---- section scaffold ---- */
+  section.ds { padding-top: 72px; scroll-margin-top: 80px; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 26px; }
+  .sec-num {
+    font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700;
+    color: var(--text-soft); letter-spacing: .04em; flex-shrink: 0;
+  }
+  .sec-head h2 {
+    font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl);
+    letter-spacing: -.01em; color: var(--text-strong); margin: 0; line-height: 1.1;
+  }
+  .sec-head p {
+    font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-muted);
+    margin: 6px 0 0; max-width: 52ch; line-height: 1.55;
+  }
+  .sec-head .grow { flex: 1; }
+
+  .card {
+    background: var(--white); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
+  }
+  .grid { display: grid; gap: 16px; }
+
+  /* ---- color scales ---- */
+  .scale { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-soft); }
+  .scale .row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; height: 46px;
+    font-family: var(--font-body); font-size: var(--text-xs);
+  }
+  .scale .name { font-weight: 600; }
+  .scale .hex { font-variant-numeric: tabular-nums; opacity: .8; letter-spacing: .02em; }
+  .scale-cap {
+    font-family: var(--font-body); font-weight: 600; font-size: var(--text-sm);
+    color: var(--text-strong); margin: 0 0 10px; display: flex; gap: 8px; align-items: center;
+  }
+  .scale-cap small { font-weight: 400; color: var(--text-muted); }
+
+  .swatch-lg {
+    border-radius: var(--radius-md); height: 96px; display: flex; align-items: flex-end;
+    padding: 12px 14px; color: #fff;
+    font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600;
+  }
+
+  /* ---- type specimens ---- */
+  .spec { padding: 26px 28px; }
+  .spec + .spec { border-top: 1px solid var(--border-soft); }
+  .spec .label {
+    font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--text-soft); margin: 0 0 12px;
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .spec .label span { color: var(--text-muted); font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+  .type-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .scale-list { display: flex; flex-direction: column; gap: 4px; }
+  .scale-list .li {
+    display: flex; align-items: baseline; gap: 18px; padding: 7px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .scale-list .li .tk { width: 88px; flex-shrink: 0; font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted); }
+  .scale-list .li .sample { font-family: var(--font-display); color: var(--text-strong); line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ---- token chips ---- */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-body);
+    border: 1px solid var(--border-soft); background: var(--white);
+    padding: 7px 12px; border-radius: 999px; display: inline-flex; gap: 8px; align-items: center;
+  }
+  .chip b { color: var(--text-strong); font-weight: 600; }
+  .chip .dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* ---- bento mini demo ---- */
+  .bento-demo {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 58px; gap: 10px;
+  }
+  .bd {
+    border-radius: 14px; background: var(--shell); border: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; color: var(--text-muted);
+    text-align: center; padding: 6px;
+  }
+  .bd.accent { background: var(--sage-100); color: var(--sage-700); border-color: var(--sage-200); }
+  .bd.ink { background: var(--ink-900); color: var(--cream); border-color: var(--ink-900); }
+  .bd.sea { background: var(--sea-50); color: var(--sea-700); border-color: var(--sea-100); }
+
+  /* ---- spacing ruler ---- */
+  .ruler { display: flex; flex-direction: column; gap: 9px; }
+  .ruler .r { display: flex; align-items: center; gap: 14px; }
+  .ruler .bar { height: 16px; border-radius: 4px; background: var(--sage-300); }
+  .ruler .meta { font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted); }
+  .ruler .meta b { color: var(--text-strong); font-weight: 600; }
+
+  /* ---- radius demo ---- */
+  .radius-demo { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radius-demo .rd { text-align: center; }
+  .radius-demo .box {
+    width: 84px; height: 64px; background: var(--sage-100); border: 1.5px solid var(--sage-300);
+    margin-bottom: 8px;
+  }
+  .radius-demo .cap { font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted); }
+  .radius-demo .cap b { display: block; color: var(--text-strong); font-weight: 600; }
+
+  /* ---- shadow demo ---- */
+  .shadow-demo { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 18px; }
+  .shadow-demo .sd {
+    background: var(--white); border-radius: var(--radius-md); height: 92px;
+    display: flex; align-items: flex-end; padding: 12px;
+    font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted);
+  }
+
+  /* ---- image style demo ---- */
+  .img-demo { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 14px; }
+  .frame { border-radius: var(--radius-lg); height: 150px; position: relative; overflow: hidden; border: 1px solid var(--border-soft); }
+  .frame .tag {
+    position: absolute; left: 12px; bottom: 12px; z-index: 2;
+    font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600;
+    color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.4);
+  }
+  .frame .scrim { position: absolute; inset: 0; }
+  .slotbox {
+    border-radius: var(--radius-lg); height: 150px; background: var(--wash-coast);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    position: relative; color: var(--brand-primary-deep);
+  }
+  .slotbox::before {
+    content: ""; position: absolute; inset: 11px;
+    border: 1.5px dashed color-mix(in srgb, var(--sage-700) 42%, transparent); border-radius: 14px;
+  }
+  .slotbox i { width: 26px; height: 26px; }
+  .slotbox span { font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; }
+
+  /* ---- icon grid ---- */
+  .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px,1fr)); gap: 12px; }
+  .icons .ic {
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
+    padding: 16px 8px; border-radius: var(--radius-md);
+    border: 1px solid var(--border-soft); background: var(--white);
+  }
+  .icons .ic .tile {
+    width: 42px; height: 42px; border-radius: 12px; background: var(--sage-100); color: var(--sage-700);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icons .ic .tile i { width: 20px; height: 20px; }
+  .icons .ic small { font-family: var(--font-body); font-size: 11px; color: var(--text-muted); }
+
+  /* ---- component catalogue ---- */
+  .cat { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cat .item { padding: 18px 20px; }
+  .cat .item h4 {
+    font-family: var(--font-display); font-weight: 400; font-size: var(--text-md);
+    color: var(--text-strong); margin: 0 0 4px;
+  }
+  .cat .item p { font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted); margin: 0 0 14px; line-height: 1.5; }
+  .mini { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-soft); }
+  .mini-img { height: 78px; position: relative; }
+  .mini-pad { padding: 12px 14px; background: var(--white); }
+  .mini-t { font-family: var(--font-display); font-size: var(--text-base); color: var(--text-strong); margin: 0 0 3px; }
+  .mini-s { font-family: var(--font-body); font-size: 11px; color: var(--text-muted); margin: 0; }
+  .mini-row { display: flex; gap: 6px; margin-top: 9px; flex-wrap: wrap; }
+  .pillbadge {
+    font-family: var(--font-body); font-size: 10.5px; font-weight: 600; padding: 4px 9px;
+    border-radius: 999px; background: var(--sea-50); color: var(--sea-700);
+  }
+  .pillbadge.sun { background: var(--sun-100); color: var(--sun-800); }
+  .pillbadge.sage { background: var(--sage-100); color: var(--sage-700); }
+
+  /* live demo wells */
+  .well { background: var(--shell); border-radius: var(--radius-md); padding: 22px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+  /* ---- mobile behaviour ---- */
+  .phones { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-start; }
+  .phone {
+    width: 190px; border-radius: 30px; background: var(--ink-900); padding: 9px;
+    box-shadow: var(--shadow-lg); flex-shrink: 0;
+  }
+  .phone .screen { background: var(--cream); border-radius: 22px; padding: 12px; display: flex; flex-direction: column; gap: 9px; }
+  .phone .pcard { border-radius: 12px; border: 1px solid var(--border-soft); background: var(--white); }
+  .phone .pcard.tall { height: 96px; }
+  .phone .pcard.mid { height: 60px; }
+  .phone .pcard.row { display: flex; gap: 8px; }
+  .phone .pcard.full { height: 48px; }
+  .phone .ptint { background: var(--sage-100); }
+  .phone .pink { background: var(--ink-900); }
+
+  .note {
+    font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-body);
+    line-height: 1.6; max-width: 46ch;
+  }
+  .note b { color: var(--text-strong); }
+  ul.clean { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  ul.clean li { font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; display: flex; gap: 11px; }
+  ul.clean li i { width: 17px; height: 17px; color: var(--sage-700); flex-shrink: 0; margin-top: 3px; }
+
+  .ds-foot { margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--border-soft); }
+  .ds-foot p { font-family: var(--font-body); font-size: var(--text-xs); color: var(--text-muted); margin: 0; }
+
+  @media (max-width: 720px) {
+    .img-demo, .cat, .bento-demo { grid-template-columns: 1fr 1fr; }
+    .sec-head { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ds-top">
+  <div class="ds-top-in">
+    <img src="assets/logo/ytm-logo.png" alt="Y.T.M. Homes & More" />
+    <a class="back" href="index.html"><i data-lucide="arrow-left"></i>Back to the board</a>
+  </div>
+</div>
+
+<div class="ds-shell">
+
+  <header class="ds-hero">
+    <p class="eyebrow">Y.T.M. Homes &amp; More · Design system</p>
+    <h1>The kit behind a calm, <em>coastal</em> portfolio.</h1>
+    <p class="lead">Everything that makes the board feel like one careful family, not a booking engine — colour, type, the bento grid, card vocabulary and the way we treat a photo. <span class="ds-script" style="font-size:1.6rem;">Built with care</span></p>
+  </header>
+
+  <!-- 01 COLOUR -->
+  <section class="ds" id="colour">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div>
+        <h2>Colour</h2>
+        <p>Three logo pastels — sun, lavender, sage — each grown into a nine-step scale so the soft tones stay decorative while deeper steps do the working UI jobs. A coastal cast of sea blue and terracotta supports them, on a warm cream canvas. Sage is the primary action colour.</p>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div>
+        <p class="scale-cap">Sun <small>warmth · highlights</small></p>
+        <div class="scale" id="scale-sun"></div>
+      </div>
+      <div>
+        <p class="scale-cap">Lavender <small>soft secondary</small></p>
+        <div class="scale" id="scale-lavender"></div>
+      </div>
+      <div>
+        <p class="scale-cap">Sage <small>primary action</small></p>
+        <div class="scale" id="scale-sage"></div>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 22px;">
+      <div>
+        <p class="scale-cap">Sea blue <small>links · trust · info</small></p>
+        <div class="scale" id="scale-sea"></div>
+      </div>
+      <div>
+        <p class="scale-cap">Terracotta <small>sparing · sunset · sale</small></p>
+        <div class="scale" id="scale-clay"></div>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(6, 1fr); margin-top: 22px;" id="neutrals"></div>
+
+    <div style="margin-top: 22px;" class="chips" id="roles"></div>
+  </section>
+
+  <!-- 02 TYPE -->
+  <section class="ds" id="type">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div>
+        <h2>Typography</h2>
+        <p>Three families. Newsreader, a warm editorial serif, carries display and headings — light weight, often italic on the emphasised word. Hanken Grotesk does everything functional. Sacramento, a signature script, signs off once per piece — never for information.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="spec">
+        <p class="label">Display — Newsreader <span>· light 300 · italic accent · tracking −0.02em</span></p>
+        <div style="font-family: var(--font-display); font-weight: 300; font-size: clamp(2rem,5vw,3.2rem); line-height: 1.05; letter-spacing: -.02em; color: var(--text-strong);">Your home <em style="font-style:italic; color: var(--sage-700);">by the sea</em></div>
+      </div>
+      <div class="spec">
+        <p class="label">Heading — Newsreader <span>· regular 400</span></p>
+        <div style="font-family: var(--font-display); font-weight: 400; font-size: var(--text-2xl); color: var(--text-strong);">Three stays by the coast</div>
+      </div>
+      <div class="spec">
+        <p class="label">Body / UI — Hanken Grotesk <span>· 16px · line-height 1.6</span></p>
+        <div style="font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--text-body); max-width: 60ch;">A small, family-run portfolio of holiday apartments and private homes — looked after with care, ready for yours. Calm mornings, sea views, and easy evenings.</div>
+      </div>
+      <div class="spec">
+        <p class="label">Eyebrow — Hanken Grotesk <span>· 600 · uppercase · tracking 0.14em</span></p>
+        <div style="font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--brand-primary-deep);">Bougainvillea Bay · Saranda</div>
+      </div>
+      <div class="spec">
+        <p class="label">Script — Sacramento <span>· sign-off only, once per piece</span></p>
+        <div style="font-family: var(--font-script); font-size: 2.4rem; color: var(--text-soft); line-height: 1;">Enjoy Saranda ♥</div>
+      </div>
+      <div class="spec">
+        <p class="label">Type scale <span>· Hanken steps shown in Newsreader</span></p>
+        <div class="scale-list" id="typescale"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 GRID -->
+  <section class="ds" id="grid">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h2>The bento grid</h2>
+        <p>Navigation lives in the cards, not a menu. A four-column grid with a fixed row unit, dense auto-flow, and modular tile spans builds a composed, magazine-like rhythm. Tiles are draggable — the board feels arranged by hand. On a phone it folds to one or two columns, preserving the bento feel.</p>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1.3fr 1fr; align-items: start;">
+      <div class="card" style="padding: 20px;">
+        <div class="bento-demo">
+          <div class="bd accent" style="grid-column: span 2; grid-row: span 2;">Feature&nbsp;2×2</div>
+          <div class="bd" style="grid-column: span 2;">Wide&nbsp;2×1</div>
+          <div class="bd">1×1</div>
+          <div class="bd ink" style="grid-row: span 2;">Tall&nbsp;1×2</div>
+          <div class="bd sea" style="grid-column: span 2;">Wide&nbsp;2×1</div>
+          <div class="bd">1×1</div>
+          <div class="bd">1×1</div>
+          <div class="bd" style="grid-column: span 3;">Banner&nbsp;3×1</div>
+        </div>
+      </div>
+      <div>
+        <ul class="clean">
+          <li><i data-lucide="layout-grid"></i><span><b>4 columns</b> on desktop · <code>grid-auto-rows</code> at a fixed row unit (≈200px home, ≈76px detail).</span></li>
+          <li><i data-lucide="move"></i><span><b>Dense auto-flow</b> back-fills gaps so spans of different sizes still nest tightly.</span></li>
+          <li><i data-lucide="grip-horizontal"></i><span><b>Draggable</b> — every tile can be picked up and rearranged; the board remembers its order.</span></li>
+          <li><i data-lucide="ruler"></i><span><b>Gap</b> 14–20px (density tweak) · max content width <b>1200px</b>.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CARDS -->
+  <section class="ds" id="cards">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div>
+        <h2>Card types</h2>
+        <p>One surface, many sizes. White (or softly tinted), 24px corners, a hairline sand border and a warm low shadow. Interactive cards lift gently on hover. Sizes give the board its variety: small fact tiles, wide intros, tall photo columns, full-bleed feature cards and dark accent tiles.</p>
+      </div>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(3,1fr);">
+      <div class="card" style="padding:20px; min-height:120px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div style="width:36px;height:36px;border-radius:11px;background:var(--sage-100);color:var(--sage-700);display:flex;align-items:center;justify-content:center;"><i data-lucide="users" style="width:18px;height:18px;"></i></div>
+        <div><div style="font-family:var(--font-display);font-size:var(--text-xl);color:var(--text-strong);">Sleeps 4</div><div style="font-family:var(--font-body);font-size:var(--text-xs);color:var(--text-muted);">Fact tile · small</div></div>
+      </div>
+      <div class="card" style="padding:20px; background:var(--shell); min-height:120px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:var(--font-display);font-size:var(--text-lg);color:var(--text-strong);line-height:1.2;">Designed for slow mornings.</div>
+        <div style="font-family:var(--font-body);font-size:var(--text-xs);color:var(--text-muted);margin-top:8px;">Tinted surface · mood</div>
+      </div>
+      <div class="card" style="padding:0; overflow:hidden; min-height:120px; background:var(--ink-900); display:flex; flex-direction:column; justify-content:flex-end;">
+        <div style="padding:20px;"><div style="font-family:var(--font-display);font-size:var(--text-xl);color:var(--cream);">€95<span style="font-size:var(--text-sm);color:rgba(255,255,255,.6);"> / night</span></div><div style="font-family:var(--font-body);font-size:var(--text-xs);color:rgba(255,255,255,.55);margin-top:4px;">Dark accent tile</div></div>
+      </div>
+    </div>
+
+    <div class="radius-demo" style="margin-top:22px;">
+      <div class="rd"><div class="box" style="border-radius:var(--radius-sm);"></div><div class="cap"><b>sm 10px</b>chips</div></div>
+      <div class="rd"><div class="box" style="border-radius:var(--radius-md);"></div><div class="cap"><b>md 16px</b>inputs</div></div>
+      <div class="rd"><div class="box" style="border-radius:var(--radius-lg);"></div><div class="cap"><b>lg 24px</b>cards · frames</div></div>
+      <div class="rd"><div class="box" style="border-radius:var(--radius-xl);"></div><div class="cap"><b>xl 32px</b>features</div></div>
+      <div class="rd"><div class="box" style="border-radius:var(--radius-pill);"></div><div class="cap"><b>pill 999px</b>buttons</div></div>
+    </div>
+
+    <div class="shadow-demo" style="margin-top:24px;">
+      <div class="sd" style="box-shadow:var(--shadow-xs);">shadow-xs</div>
+      <div class="sd" style="box-shadow:var(--shadow-sm);">shadow-sm</div>
+      <div class="sd" style="box-shadow:var(--shadow-card);">shadow-card</div>
+      <div class="sd" style="box-shadow:var(--shadow-lg);">shadow-lg</div>
+    </div>
+  </section>
+
+  <!-- 05 BUTTONS -->
+  <section class="ds" id="buttons">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div>
+        <h2>Buttons &amp; links</h2>
+        <p>Soft pills in the warm palette. Sage is the primary action; secondary is a quiet outline; text links pair an arrow that nudges on hover. Clear, never aggressive — booking should feel like an invitation.</p>
+      </div>
+    </div>
+    <div class="well" id="buttons-demo"></div>
+  </section>
+
+  <!-- 06 IMAGE -->
+  <section class="ds" id="image">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <div>
+        <h2>Image style</h2>
+        <p>Warm, natural light; golden-hour tones; calm, lived-in spaces. Photos sit in rounded frames, or full-bleed under a bottom scrim for legible text. Where a photo isn't placed yet, a soft coastal wash with a dashed frame marks the slot — an honest, inviting placeholder.</p>
+      </div>
+    </div>
+    <div class="img-demo">
+      <div class="frame" style="background:var(--wash-sunrise);">
+        <div class="scrim" style="background:var(--scrim-bottom);"></div>
+        <span class="tag">Full-bleed · bottom scrim</span>
+      </div>
+      <div class="slotbox"><i data-lucide="image"></i><span>Photo slot</span></div>
+      <div class="frame" style="background:var(--wash-dusk);">
+        <span class="tag" style="color:var(--text-strong); text-shadow:none;">Rounded frame · wash</span>
+      </div>
+    </div>
+    <div class="chips" style="margin-top:16px;">
+      <span class="chip"><b>--wash-coast</b> sea → cream → sage</span>
+      <span class="chip"><b>--wash-sunrise</b> sun → shell</span>
+      <span class="chip"><b>--wash-dusk</b> lavender → cream</span>
+      <span class="chip"><b>--scrim-bottom</b> legible captions</span>
+    </div>
+  </section>
+
+  <!-- 07 ICONS -->
+  <section class="ds" id="icons">
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <div>
+        <h2>Iconography</h2>
+        <p>Lucide line icons at ~2px stroke — even weight and rounded caps that echo the logo's soft geometry. They usually sit in a tinted rounded tile (brand -100 background, -700 icon). No emoji as icons; only the occasional ♥ or ☀ as a warm sign-off.</p>
+      </div>
+    </div>
+    <div class="icons" id="icon-grid"></div>
+  </section>
+
+  <!-- 08 SPACING -->
+  <section class="ds" id="spacing">
+    <div class="sec-head">
+      <span class="sec-num">08</span>
+      <div>
+        <h2>Spacing</h2>
+        <p>An 8px base grid, used generously. The brand breathes — sections rest on ~104px of vertical rhythm, prose stays under 68 characters, and negative space does as much work as the ink.</p>
+      </div>
+    </div>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
+      <div class="card" style="padding:22px;"><div class="ruler" id="ruler"></div></div>
+      <div>
+        <ul class="clean">
+          <li><i data-lucide="move-vertical"></i><span><b>Section rhythm</b> — 104px between page sections (<code>--section-y</code>).</span></li>
+          <li><i data-lucide="text"></i><span><b>Readable prose</b> capped at 68ch; documents at 760px.</span></li>
+          <li><i data-lucide="square"></i><span><b>Card padding</b> 24–32px; tile gaps 14–20px.</span></li>
+          <li><i data-lucide="hand"></i><span><b>Touch targets</b> never below 44px.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 COMPONENTS -->
+  <section class="ds" id="components">
+    <div class="sec-head">
+      <span class="sec-num">09</span>
+      <div>
+        <h2>Bento component vocabulary</h2>
+        <p>The reusable cards the board is built from. Each fills its tile and reads the page's accent and theme, so the same widget feels coastal in Saranda and urban in Prishtina.</p>
+      </div>
+    </div>
+    <div class="cat" id="component-cat"></div>
+  </section>
+
+  <!-- 10 MOBILE -->
+  <section class="ds" id="mobile">
+    <div class="sec-head">
+      <span class="sec-num">10</span>
+      <div>
+        <h2>Mobile behaviour</h2>
+        <p>The bento doesn't become a boring list on a phone — it folds to a one- or two-column stack that keeps the modular rhythm: a feature card, paired fact tiles, a tall photo, a dark accent. Order is preserved from the desktop arrangement.</p>
+      </div>
+    </div>
+    <div class="phones">
+      <div class="phone"><div class="screen">
+        <div class="pcard tall ptint"></div>
+        <div class="pcard row"><div class="pcard mid" style="flex:1;"></div><div class="pcard mid" style="flex:1;"></div></div>
+        <div class="pcard tall"></div>
+        <div class="pcard full pink"></div>
+      </div></div>
+      <div class="phone"><div class="screen">
+        <div class="pcard mid"></div>
+        <div class="pcard tall ptint"></div>
+        <div class="pcard row"><div class="pcard mid" style="flex:1;"></div><div class="pcard mid" style="flex:1;"></div></div>
+        <div class="pcard full"></div>
+      </div></div>
+      <div style="max-width:34ch;">
+        <p class="note"><b>One column</b> below 560px, <b>two</b> from 560–820px. Drag is disabled on touch in favour of native scroll; every card stays tappable with a 44px minimum target. The sticky header collapses to the logo mark and a single back affordance.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ds-foot">
+    <p>Y.T.M. Homes &amp; More — design system reference · Newsreader · Hanken Grotesk · Sacramento · Lucide. Fonts and sample content are illustrative stand-ins, to be confirmed. <span class="ds-script" style="font-size:1.3rem;">Homes &amp; More</span></p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  const SCALES = {
+    sun:      ['50','100','200','300','400','500','600','700','800','900'],
+    lavender: ['50','100','200','300','400','500','600','700','800','900'],
+    sage:     ['50','100','200','300','400','500','600','700','800','900'],
+    sea:      ['50','100','200','300','400','500','600','700','800','900'],
+    clay:     ['50','100','200','300','400','500','600','700','800','900'],
+  };
+  const css = getComputedStyle(document.documentElement);
+  function hex(v){ return css.getPropertyValue(v).trim(); }
+  function lum(h){
+    const m = h.replace('#','');
+    if(m.length<6) return 1;
+    const r=parseInt(m.slice(0,2),16),g=parseInt(m.slice(2,4),16),b=parseInt(m.slice(4,6),16);
+    return (0.299*r+0.587*g+0.114*b)/255;
+  }
+  Object.entries(SCALES).forEach(([fam,steps])=>{
+    const el = document.getElementById('scale-'+fam);
+    if(!el) return;
+    el.innerHTML = steps.map(s=>{
+      const v = '--'+fam+'-'+s;
+      const h = hex(v);
+      const fg = lum(h) > 0.62 ? 'var(--ink-900)' : '#fff';
+      return `<div class="row" style="background:${h};color:${fg}"><span class="name">${s}${s==='500'?' ·':''}</span><span class="hex">${h.toUpperCase()}</span></div>`;
+    }).join('');
+  });
+
+  // neutrals
+  const NEU = [['Cream','--cream'],['Shell','--shell'],['Sand 200','--sand-200'],['Stone 300','--stone-300'],['Ink 700','--ink-700'],['Ink 900','--ink-900']];
+  document.getElementById('neutrals').innerHTML = NEU.map(([n,v])=>{
+    const h=hex(v); const fg=lum(h)>0.6?'var(--ink-900)':'#fff';
+    return `<div class="swatch-lg" style="background:${h};color:${fg}">${n}<br><span style="font-weight:400;opacity:.8">${h.toUpperCase()}</span></div>`;
+  }).join('');
+
+  // semantic roles
+  const ROLES = [
+    ['Primary action','--sage-600'],['Hover','--sage-700'],['Secondary','--lavender-500'],
+    ['Link / trust','--sea-600'],['Accent','--clay-500'],['Text','--ink-900'],['Muted','--stone-500'],['Border','--sand-200']
+  ];
+  document.getElementById('roles').innerHTML = ROLES.map(([n,v])=>`<span class="chip"><span class="dot" style="background:${hex(v)}"></span><b>${n}</b> ${v.replace('--','')}</span>`).join('');
+
+  // type scale
+  const TS = [['5xl · 76px','4.75rem'],['3xl · 48px','3rem'],['2xl · 36px','2.25rem'],['xl · 28px','1.75rem'],['lg · 22px','1.375rem'],['md · 18px','1.125rem'],['base · 16px','1rem']];
+  document.getElementById('typescale').innerHTML = TS.map(([t,s])=>`<div class="li"><span class="tk">${t}</span><span class="sample" style="font-size:${s}">Saranda</span></div>`).join('');
+
+  // spacing ruler
+  const SP = [['space-2','8px',8],['space-3','12px',12],['space-4','16px',16],['space-5','24px',24],['space-6','32px',32],['space-7','40px',40],['space-9','64px',64],['space-11','104px',104]];
+  document.getElementById('ruler').innerHTML = SP.map(([n,px,w])=>`<div class="r"><div class="bar" style="width:${Math.min(w,160)}px"></div><div class="meta"><b>${px}</b> · ${n}</div></div>`).join('');
+
+  // icon grid
+  const ICONS = ['waves','sun','bed-double','wifi','coffee','square-parking','wind','key-round','map-pin','utensils','footprints','car','ship','shield-check','message-circle','star'];
+  document.getElementById('icon-grid').innerHTML = ICONS.map(n=>`<div class="ic"><div class="tile"><i data-lucide="${n}"></i></div><small>${n}</small></div>`).join('');
+
+  // component catalogue
+  const COMP = [
+    ['Property thumbnail','Image, badges, title, sleeps & price — the clickable unit of a collection.','sun', ['Sea view','★ 4.94'], 'YTM Dreamy','Sleeps 4 · €95'],
+    ['Collection card','A place — Saranda or Prishtina — wrapping its stays with a mood line.','sage', ['3 stays'], 'Saranda','warm · coastal · slow'],
+    ['Location / map card','A stylised map with approximate pins; exact address shared after booking.','sea', ['Approximate'], 'Prishtina, Kosovo','City centre'],
+    ['Airbnb / link preview','A trust-building preview of the live listing with rating and a quiet outbound link.','sun', ['★ 4.90'], 'Airbnb listing','See the full listing →'],
+    ['Spotify playlist','The YTM mix on a dark tile — sound, mood, a green play affordance.','sage', ['Playlist'], 'Slow coast mornings','sun, sea & easy evenings'],
+    ['Photo gallery','A big hero slot with two supporting frames and a “+ photos” affordance.','sea', ['Gallery'], 'Gallery','Hero + details'],
+    ['Description card','The mood, in the host\'s voice — closing with one script sign-off.','sun', [], 'About this stay','Made for unhurried days.'],
+    ['Amenities card','Soft icon tiles for what\'s here — Wi-Fi, coffee, sea view, parking.','sage', ['Wi-Fi','Coffee'], 'What\'s here','6 essentials'],
+    ['Booking / contact','€/night, a reassuring line, a primary “request dates” and WhatsApp.','sea', ['Direct rate'], '€95 / night','Request these dates'],
+    ['Testimonial / review','A single warm quote with guest name and stay — never a wall of reviews.','sun', ['★ 4.9'], '“Perfect location…”','— a recent guest'],
+    ['Local recommendation','From-your-hosts picks — the coffee, the swim, the dinner we\'d choose.','sage', ['Our picks'], 'From your hosts','Where we\'d go'],
+    ['Practical info','Wi-Fi, parking, beach & city distance — exact, scannable, key/value.','sea', ['Good to know'], 'Good to know','Beach 5 min · City 10']
+  ];
+  const washes = {sun:'var(--wash-sunrise)', sage:'linear-gradient(135deg,var(--sage-100),var(--cream))', sea:'var(--wash-coast)'};
+  document.getElementById('component-cat').innerHTML = COMP.map(([h,p,tone,badges,t,s])=>`
+    <div class="card item">
+      <h4>${h}</h4>
+      <p>${p}</p>
+      <div class="mini">
+        <div class="mini-img" style="background:${washes[tone]||'var(--shell)'}"></div>
+        <div class="mini-pad">
+          <p class="mini-t">${t}</p>
+          <p class="mini-s">${s}</p>
+          ${badges.length?`<div class="mini-row">${badges.map(b=>`<span class="pillbadge ${tone==='sun'?'sun':tone==='sage'?'sage':''}">${b}</span>`).join('')}</div>`:''}
+        </div>
+      </div>
+    </div>`).join('');
+
+  // live DS buttons
+  const DS = window.YTMHomesMoreDesignSystem_3b4e5e;
+  if (DS && window.React && window.ReactDOM) {
+    const { Button, Badge } = DS;
+    const e = React.createElement;
+    const ico = (n)=>e('i',{'data-lucide':n});
+    ReactDOM.createRoot(document.getElementById('buttons-demo')).render(
+      e(React.Fragment, null,
+        e(Button, {variant:'primary', iconRight: ico('arrow-right')}, 'Request these dates'),
+        e(Button, {variant:'secondary'}, 'See the listing'),
+        e(Badge, {tone:'sage'}, 'Available'),
+        e(Badge, {tone:'sun'}, '★ 4.94 · 128'),
+        e(Badge, {tone:'sea'}, 'Sea view'),
+        e('a', {href:'#', style:{fontFamily:'var(--font-body)', fontWeight:600, fontSize:'var(--text-sm)', color:'var(--sea-600)', textDecoration:'none', display:'inline-flex', gap:'6px', alignItems:'center'}}, 'Explore the board', ico('arrow-right'))
+      )
+    );
+  }
+
+  if (window.lucide) lucide.createIcons();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* ============================================================
+   Y.T.M. Homes & More — SPACING & SIZING TOKENS
+   8px base grid. Generous, airy spacing is core to the brand.
+   ============================================================ */
+:root {
+  --space-0:   0;
+  --space-1:   0.25rem;  /*  4px */
+  --space-2:   0.5rem;   /*  8px */
+  --space-3:   0.75rem;  /* 12px */
+  --space-4:   1rem;     /* 16px */
+  --space-5:   1.5rem;   /* 24px */
+  --space-6:   2rem;     /* 32px */
+  --space-7:   2.5rem;   /* 40px */
+  --space-8:   3rem;     /* 48px */
+  --space-9:   4rem;     /* 64px */
+  --space-10:  5rem;     /* 80px */
+  --space-11:  6.5rem;   /* 104px */
+  --space-12:  8rem;     /* 128px */
+
+  /* Semantic spacing */
+  --gap-inline:    var(--space-2);
+  --gap-tight:     var(--space-3);
+  --gap-default:   var(--space-5);
+  --gap-loose:     var(--space-7);
+  --pad-card:      var(--space-6);
+  --pad-card-sm:   var(--space-5);
+  --section-y:     var(--space-11);   /* vertical rhythm between page sections */
+  --content-max:   1200px;            /* site content container */
+  --prose-max:     68ch;              /* readable text column */
+  --doc-max:       760px;             /* print/document column */
+
+  /* ---- Radii — soft, rounded, never sharp ---- */
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   16px;   /* default card / input */
+  --radius-lg:   24px;   /* feature cards, image frames */
+  --radius-xl:   32px;
+  --radius-pill: 999px;  /* buttons, chips, badges */
+
+  /* ---- Border widths ---- */
+  --border-w:        1px;
+  --border-w-strong: 1.5px;
+
+  /* ---- Control sizing ---- */
+  --control-h-sm: 36px;
+  --control-h:    44px;   /* default — meets 44px touch target */
+  --control-h-lg: 54px;
+}

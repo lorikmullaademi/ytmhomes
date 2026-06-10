@@ -1,0 +1,136 @@
+/* ============================================================
+   Y.T.M. Homes & More — COLOR TOKENS
+   Built from the logo: pastel sun yellow, lavender, sage olive.
+   Each brand hue carries a full scale so the soft signature
+   pastels stay decorative while deeper steps do the working
+   UI jobs (text, buttons, borders) at accessible contrast.
+   ============================================================ */
+:root {
+  /* --- Brand core (exact logo values at -500) --- */
+  --sun-50:  #FCFAEC;
+  --sun-100: #F8F2CF;
+  --sun-200: #F2E7A9;
+  --sun-300: #EEDF92;
+  --sun-400: #EBDB89;
+  --sun-500: #E9D985;  /* logo yellow */
+  --sun-600: #D6C25C;
+  --sun-700: #B49E3B;  /* text/accents on cream */
+  --sun-800: #8A782B;
+  --sun-900: #5E5220;
+
+  --lavender-50:  #F8F4FB;
+  --lavender-100: #EFE6F4;
+  --lavender-200: #E1D0EC;
+  --lavender-300: #D5C0E3;
+  --lavender-400: #CFB8DF;
+  --lavender-500: #CDB4DB;  /* logo lavender */
+  --lavender-600: #AE8FC4;
+  --lavender-700: #8B68A6;  /* text/accents */
+  --lavender-800: #654A7A;
+  --lavender-900: #443352;
+
+  --sage-50:  #F6F7EE;
+  --sage-100: #EAEDD7;
+  --sage-200: #D6DDB2;
+  --sage-300: #C2CC93;
+  --sage-400: #B8C285;
+  --sage-500: #B2BD7E;  /* logo olive/sage */
+  --sage-600: #94A05C;
+  --sage-700: #717C44;  /* text/buttons */
+  --sage-800: #545C33;
+  --sage-900: #3A4024;
+
+  /* --- Supporting coastal palette --- */
+  /* Muted Mediterranean sea blue */
+  --sea-50:  #EFF4F6;
+  --sea-100: #D7E3E8;
+  --sea-200: #AFC8D1;
+  --sea-300: #84A9B7;
+  --sea-400: #6B96A6;
+  --sea-500: #548196;  /* sea accent */
+  --sea-600: #45697B;
+  --sea-700: #385664;
+  --sea-800: #2C434E;
+  --sea-900: #20313A;
+
+  /* Warm clay terracotta — sparing accent / sale tags */
+  --clay-50:  #FBF1EC;
+  --clay-100: #F4DDD0;
+  --clay-200: #E8BCA3;
+  --clay-300: #DB9B78;
+  --clay-400: #D2855D;
+  --clay-500: #C97B5A;  /* terracotta accent */
+  --clay-600: #B0613F;
+  --clay-700: #8E4D33;
+  --clay-800: #6B3B28;
+  --clay-900: #4A291C;
+
+  /* --- Warm neutrals (sand → charcoal) --- */
+  --cream:    #FBF8F1;  /* primary page canvas */
+  --shell:    #F5EFE3;  /* secondary surface */
+  --sand-100: #EFE7D6;
+  --sand-200: #E5D9C2;
+  --sand-300: #D8C8AB;
+  --sand-400: #C3AE8B;
+  --stone-100:#EDEAE3;
+  --stone-200:#D9D4C9;
+  --stone-300:#B9B2A4;
+  --stone-400:#948D7E;
+  --stone-500:#736C5F;
+  --ink-700:  #4A453D;
+  --ink-800:  #38332C;
+  --ink-900:  #2E2A24;  /* warm charcoal — primary text */
+  --white:    #FFFFFF;
+  --logo-grey:#C6C6C7;  /* the logo's dots + script grey */
+
+  /* --- Functional --- */
+  --success-500: #6E9A63;
+  --success-50:  #EEF3EA;
+  --warning-500: #D6A23E;
+  --warning-50:  #FBF3DF;
+  --error-500:   #C25742;
+  --error-50:    #F8E8E3;
+  --info-500:    var(--sea-500);
+  --info-50:     var(--sea-50);
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in components
+     ============================================================ */
+  /* Surfaces */
+  --surface-page:        var(--cream);
+  --surface-raised:      var(--white);
+  --surface-card:        var(--white);
+  --surface-sunk:        var(--shell);
+  --surface-inverse:     var(--ink-900);
+  --surface-sand:        var(--sand-100);
+
+  /* Text */
+  --text-strong:         var(--ink-900);
+  --text-body:           var(--ink-800);
+  --text-muted:          var(--stone-500);
+  --text-soft:           var(--stone-400);
+  --text-on-inverse:     var(--cream);
+  --text-on-brand:       var(--ink-900);
+  --text-link:           var(--sea-600);
+
+  /* Borders & lines */
+  --border-soft:         var(--sand-200);
+  --border-default:      var(--sand-300);
+  --border-strong:       var(--stone-300);
+  --hairline:            #00000010;
+
+  /* Brand roles */
+  --brand-primary:       var(--sage-500);
+  --brand-primary-deep:  var(--sage-700);
+  --brand-secondary:     var(--lavender-500);
+  --brand-tertiary:      var(--sun-500);
+  --brand-sea:           var(--sea-500);
+  --brand-clay:          var(--clay-500);
+
+  /* Interactive (primary action = sage, the most grounded hue) */
+  --action-bg:           var(--sage-600);
+  --action-bg-hover:     var(--sage-700);
+  --action-bg-active:    var(--sage-800);
+  --action-fg:           var(--white);
+  --focus-ring:          var(--sea-500);
+}
