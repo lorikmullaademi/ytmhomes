@@ -109,7 +109,7 @@
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-base)", lineHeight: 1.6, color: "var(--text-muted)", margin: "0 0 18px" }}>
             Thank you — we’ll confirm your dates for <b style={{ color: "var(--text-strong)" }}>{p ? p.name : "your stay"}</b> by WhatsApp within the hour. A warm welcome awaits.
           </p>
-          <div style={{ fontFamily: "var(--font-script)", fontSize: 30, color: "var(--accent-deep)", marginBottom: 20 }}>Lorik &amp; Leart</div>
+          <div style={{ fontFamily: "var(--font-script)", fontSize: 30, color: "var(--accent-deep)", marginBottom: 20 }}>Leart &amp; Lorik</div>
           <Button variant="primary" fullWidth onClick={onClose}>Back to the board</Button>
         </div>
       </div>
@@ -168,10 +168,9 @@
       <div className="ytm ytm-root" style={rootVars}>
         {view === "detail" && cur && <DetailBar p={cur} onHome={goHome} onSibling={open} />}
         {view === "home" && <Homepage onOpen={open} />}
-        {view === "detail" && cur && <PropertyDetail id={curId} onBook={() => setBooked(cur)} resetSignal={reset} />}
+        {view === "detail" && cur && <PropertyDetail id={curId} onBook={() => setBooked(cur)} />}
         <Footer onHome={goHome} />
         {booked && <BookingModal p={booked} onClose={() => setBooked(null)} />}
-        {view === "detail" && <DragHint />}
 
         <TweaksPanel>
           <TweakSection label="Layout" />
@@ -183,8 +182,6 @@
           <TweakRadio label="Shadow" value={t.shadow}
             options={["flat", "soft", "lifted"]}
             onChange={(v) => setTweak("shadow", v)} />
-          <TweakButton label="Arrangement" onClick={() => setReset((r) => r + 1)}>Reset card order</TweakButton>
-
           <TweakSection label="Brand" />
           <TweakSelect label="Display font" value={t.displayFont}
             options={Object.keys(FONTS)}

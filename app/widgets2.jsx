@@ -214,8 +214,7 @@
           <span style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontSize: "var(--text-lg)", color: "#fff" }}>{c.letLabel.split(" · ")[0]}</span>
           <span style={{ marginLeft: "auto" }}><Badge tone="success">Direct booking</Badge></span>
         </div>
-        <p style={{ ...body("var(--text-sm)"), color: "rgba(255,255,255,.72)", margin: "12px 0 16px" }}>You won’t be charged yet — we’ll confirm your dates by WhatsApp.</p>
-        <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 9, marginTop: 16 }}>
           <Button variant="primary" fullWidth iconRight={I("arrow-right")} onClick={onBook}>Request these dates</Button>
           <a href={"https://wa.me/" + window.YTM.contact.whatsapp.replace(/[^\d]/g, "")} data-no-drag target="_blank" rel="noopener" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, color: "rgba(255,255,255,.82)", fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", textDecoration: "none", whiteSpace: "nowrap" }}>
             <span style={{ display: "inline-flex", width: 15, height: 15 }}><Wa /></span>Ask a question

@@ -243,9 +243,9 @@
     return (
       <BentoCard tone="tint" pad={22} style={{ justifyContent: "center", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <Avatar name="Lorik L." tone="lavender" size="md" />
+          <Avatar name="Leart L." tone="lavender" size="md" />
           <div>
-            <div style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-sm)", color: "var(--ink-900)" }}>Lorik &amp; Leart</div>
+            <div style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-sm)", color: "var(--ink-900)" }}>Leart &amp; Lorik</div>
             <div style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "var(--text-muted)" }}>Your hosts</div>
           </div>
         </div>
