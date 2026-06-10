@@ -326,9 +326,9 @@
     eyebrow: "Our story",
     title: "A name built from ours.",
     paragraphs: [
-      "Y.T.M. is our parents — Ylber and Teuta, and the initial of our family name. They are the investors behind every property here: a lifetime of careful work, built into lovely homes they have always kept with care.",
-      "Our mother Teuta, an architect, helped design these properties down to their very foundations — which is why each one feels considered, solid and quietly beautiful.",
-      "Today the two of us — Lorik and Leart, their sons — manage the spaces for rent: the Saranda apartments as short-term stays on Airbnb, and the Prishtina homes as long-term rentals. More family properties are taking shape, and they’ll join the board when they’re ready.",
+      "Y.T.M. is our parents, Ylber and Teuta, and the initial of our family name. They are the investors behind every property here: a lifetime of careful work, built into lovely homes they have always kept with care.",
+      "Our mother Teuta, an architect, helped design these properties down to their very foundations. It is why each one feels considered, solid and quietly beautiful.",
+      "Today the two of us, Lorik and Leart, manage the spaces for rent: the Saranda apartments as short-term stays on Airbnb, and the Prishtina homes as long-term rentals. More family properties are taking shape, and they will join when they are ready.",
     ],
     signoff: "Lorik & Leart",
   };

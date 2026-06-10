@@ -83,17 +83,17 @@
   // ============================================================
   function BrandTile() {
     return (
-      <BentoCard tone="tint" pad={26} style={{ justifyContent: "space-between" }}>
+      <BentoCard tone="tint" pad={26} style={{ justifyContent: "space-between", gap: 28 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
           <img src={ASSETS + "/logo/ytm-logo.png"} alt="Y.T.M. Homes & More" style={{ width: "62%", maxWidth: 240, height: "auto" }} />
           <span style={{ ...eyebrow, color: "var(--accent-deep)", textAlign: "right", lineHeight: 1.5 }}>Albanian<br />Riviera<br />& beyond</span>
         </div>
-        <div>
+        <div style={{ marginTop: 12 }}>
           <h1 style={{ ...serif("clamp(28px, 3.4vw, 46px)"), marginBottom: 10 }}>
             Homes by the sea,<br />and in the <em style={{ fontStyle: "italic", color: "var(--accent-deep)" }}>city</em>.
           </h1>
           <p style={{ ...body("var(--text-md)"), maxWidth: 420 }}>
-            A small, family-run portfolio of holiday apartments and private homes — looked after with care, ready for yours.
+            A small, family-run portfolio of holiday apartments and private homes, looked after with care and ready for yours.
           </p>
         </div>
         <div style={{ display: "flex", gap: 7, alignItems: "center" }}>
