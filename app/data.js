@@ -264,6 +264,7 @@
       collection: "prishtina",
       name: "YTM Center",
       kind: "Commercial · city centre",
+      commercial: true,
       eyebrow: "City centre · Prishtina",
       location: "Prishtina, Kosovo",
       mood: "Right in the heart of the city, with everything at the door.",
@@ -318,6 +319,17 @@
   const byId = {};
   properties.forEach((p) => { byId[p.id] = p; });
 
+  // ---- Our story (homepage) ----------------------------------------
+  const story = {
+    eyebrow: "Our story",
+    title: "One family, two shores.",
+    paragraphs: [
+      "Y.T.M. began with a single apartment above Bougainvillea Bay — a place we kept for summers, lent to friends, and slowly learned to share. One door became five: three sunny stays on the Saranda coast, and two grounded homes in Prishtina, where our family’s story started.",
+      "We look after every home ourselves — cleaned and checked before each arrival, answered personally, cared for like our own. Because it is our own. The warmth of a host, the ease of a hotel, and a family on the other end of every message.",
+    ],
+    signoff: "Yllka & family",
+  };
+
   window.YTM = {
     DS,
     ASSETS: "assets",
@@ -325,6 +337,7 @@
     collections,
     properties,
     byId,
+    story,
     propsOf: (cid) => properties.filter((p) => p.collection === cid),
     contact: {
       whatsapp: "+355 69 000 0000",

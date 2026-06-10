@@ -167,19 +167,14 @@
     return (
       <div className="ytm ytm-root" style={rootVars}>
         {view === "detail" && cur && <DetailBar p={cur} onHome={goHome} onSibling={open} />}
-        {view === "home" && <Homepage onOpen={open} onBook={() => {}} arrangement={t.arrangement} resetSignal={reset} />}
+        {view === "home" && <Homepage onOpen={open} />}
         {view === "detail" && cur && <PropertyDetail id={curId} onBook={() => setBooked(cur)} resetSignal={reset} />}
         <Footer onHome={goHome} />
         {booked && <BookingModal p={booked} onClose={() => setBooked(null)} />}
-        <DragHint />
+        {view === "detail" && <DragHint />}
 
         <TweaksPanel>
           <TweakSection label="Layout" />
-          {view === "home" && (
-            <TweakRadio label="Arrangement" value={t.arrangement}
-              options={["editorial", "gallery", "compact"]}
-              onChange={(v) => setTweak("arrangement", v)} />
-          )}
           <TweakRadio label="Density" value={t.density}
             options={["spacious", "comfy", "compact"]}
             onChange={(v) => setTweak("density", v)} />

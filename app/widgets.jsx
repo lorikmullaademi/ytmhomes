@@ -117,6 +117,23 @@
   }
 
   // ============================================================
+  // OUR STORY  (homepage left column)
+  // ============================================================
+  function StoryTile() {
+    const s = window.YTM.story;
+    return (
+      <BentoCard pad={26} style={{ gap: 14, justifyContent: "flex-start" }}>
+        <p style={eyebrow}>{s.eyebrow}</p>
+        <h2 style={serif("var(--text-2xl)")}>{s.title}</h2>
+        {s.paragraphs.map((t, i) => (
+          <p key={i} style={body("var(--text-md)")}>{t}</p>
+        ))}
+        <div style={{ ...script, fontSize: 28, marginTop: 4 }}>{s.signoff} <span aria-hidden="true">♥</span></div>
+      </BentoCard>
+    );
+  }
+
+  // ============================================================
   // COLLECTION HEADER
   // ============================================================
   function CollectionTile({ c, onOpen }) {
@@ -157,7 +174,7 @@
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "rgba(255,255,255,.9)", margin: 0, lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: tall ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{tall ? p.mood : p.glance}</p>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginTop: 2 }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "rgba(255,255,255,.85)", whiteSpace: "nowrap" }}>
-              <span style={{ display: "inline-flex", width: 13, height: 13 }}>{I("users")}</span>{p.sleeps}
+              <span style={{ display: "inline-flex", width: 13, height: 13 }}>{I(p.commercial ? "briefcase" : "users")}</span>{p.commercial ? "Commercial space" : p.sleeps}
             </span>
             <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "#fff", whiteSpace: "nowrap" }}>
               <b style={{ fontWeight: 700 }}>€{p.price}</b> <span style={{ opacity: .8 }}>/ night</span>
@@ -318,7 +335,7 @@
 
   window.YTMW = {
     BentoCard, Photo, wash, eyebrow, serif, body, script, I,
-    BrandTile, IntroTile, CollectionTile, PropertyThumb, MapTile,
+    BrandTile, IntroTile, StoryTile, CollectionTile, PropertyThumb, MapTile,
     ContactTile, TrustTile, StatTile, SpotifyTile, MoodPhotoTile, QuoteTile,
   };
 })();
