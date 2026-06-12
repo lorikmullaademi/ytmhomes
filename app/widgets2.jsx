@@ -10,24 +10,77 @@
   const { Button, Badge, AmenityItem, Tag } = DSC;
   const { BentoCard, Photo, eyebrow, serif, body, script, I, Wa } = W;
 
-  // ---- GALLERY: big slot + two small slots ------------------------
-  function GalleryTile({ p }) {
-    return (
-      <BentoCard pad={0}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gridTemplateRows: "1fr 1fr", gap: 4, height: "100%" }}>
-          <div style={{ position: "relative", gridRow: "span 2" }}>
-            <Photo id={"gal-" + p.id + "-1"} label="Hero photo" icon="image" w={p.wash} />
-          </div>
-          <div style={{ position: "relative" }}>
-            <Photo id={"gal-" + p.id + "-2"} label="Terrace" icon="sun" w={p.wash} />
-          </div>
-          <div style={{ position: "relative" }}>
-            <Photo id={"gal-" + p.id + "-3"} label="Interior" icon="bed-double" w="dusk" />
-            <span style={{ position: "absolute", bottom: 10, right: 10, padding: "5px 11px", borderRadius: 999, background: "rgba(255,255,255,.9)", backdropFilter: "blur(6px)", fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 600, color: "var(--ink-800)", display: "inline-flex", alignItems: "center", gap: 5, pointerEvents: "none" }}>
-              <span style={{ display: "inline-flex", width: 12, height: 12 }}>{I("images")}</span>+ photos
+  // ---- GALLERY: hero + 4 preview slots + "see all" slider ---------
+  const PHOTO_SLOTS = [
+    { label: "Hero photo", icon: "image" },
+    { label: "Living room", icon: "sofa" },
+    { label: "Bedroom", icon: "bed-double" },
+    { label: "Terrace", icon: "sun" },
+    { label: "Kitchen", icon: "utensils" },
+    { label: "Bathroom", icon: "shower-head" },
+    { label: "The view", icon: "mountain-snow" },
+    { label: "Details", icon: "sparkles" },
+  ];
+
+  function PhotoSlider({ p, onClose }) {
+    const [i, setI] = React.useState(0);
+    const n = PHOTO_SLOTS.length;
+    const prev = () => setI((v) => (v - 1 + n) % n);
+    const next = () => setI((v) => (v + 1) % n);
+    React.useEffect(() => {
+      const onKey = (e) => {
+        if (e.key === "Escape") onClose();
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+      };
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    }, []);
+    React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
+    return ReactDOM.createPortal(
+      <div className="ytm-ov" onClick={onClose}>
+        <div onClick={(e) => e.stopPropagation()} style={{ width: "min(960px, 94vw)", display: "flex", flexDirection: "column", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-md)", color: "#fff" }}>{p.name} · {PHOTO_SLOTS[i].label}</span>
+            <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "rgba(255,255,255,.75)" }}>{i + 1} / {n}</span>
+              <button className="ytm-icon" aria-label="Close" onClick={onClose}>{I("x")}</button>
             </span>
           </div>
+          <div style={{ position: "relative", height: "min(560px, 68vh)", borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--surface-sunk)" }}>
+            <image-slot key={i} id={"gal-" + p.id + "-" + i} shape="rect" placeholder={PHOTO_SLOTS[i].label} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}></image-slot>
+            <button className="ytm-icon" aria-label="Previous photo" onClick={prev} style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)" }}>{I("chevron-left")}</button>
+            <button className="ytm-icon" aria-label="Next photo" onClick={next} style={{ position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)" }}>{I("chevron-right")}</button>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", gap: 7 }}>
+            {PHOTO_SLOTS.map((s, k) => (
+              <button key={k} aria-label={s.label} onClick={() => setI(k)} style={{ width: 9, height: 9, borderRadius: "50%", border: "none", cursor: "pointer", background: k === i ? "#fff" : "rgba(255,255,255,.35)", padding: 0 }}></button>
+            ))}
+          </div>
         </div>
+      </div>,
+      document.body
+    );
+  }
+
+  function GalleryTile({ p }) {
+    const [open, setOpen] = React.useState(false);
+    return (
+      <BentoCard pad={0}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.7fr 1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 4, height: "100%" }}>
+          <div style={{ position: "relative", gridRow: "span 2" }}>
+            <Photo id={"gal-" + p.id + "-0"} label="Hero photo" icon="image" w={p.wash} />
+          </div>
+          {[1, 2, 3, 4].map((k) => (
+            <div key={k} style={{ position: "relative" }}>
+              <Photo id={"gal-" + p.id + "-" + k} label={PHOTO_SLOTS[k].label} icon={PHOTO_SLOTS[k].icon} w={k % 2 ? p.wash : "dusk"} />
+            </div>
+          ))}
+        </div>
+        <button onClick={() => setOpen(true)} style={{ position: "absolute", bottom: 12, right: 12, padding: "8px 14px", borderRadius: 999, border: "1px solid var(--border-soft)", background: "rgba(255,255,255,.92)", backdropFilter: "blur(6px)", boxShadow: "var(--shadow-sm)", fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", fontWeight: 600, color: "var(--ink-800)", display: "inline-flex", alignItems: "center", gap: 6, cursor: "pointer" }}>
+          <span style={{ display: "inline-flex", width: 13, height: 13 }}>{I("images")}</span>See all photos
+        </button>
+        {open && <PhotoSlider p={p} onClose={() => setOpen(false)} />}
       </BentoCard>
     );
   }
@@ -249,9 +302,29 @@
     );
   }
 
+  // ---- SPOTIFY EMBED (official iframe player) ---------------------
+  function SpotifyEmbedTile() {
+    const m = (window.YTM.SPOTIFY || "").match(/playlist\/([A-Za-z0-9]+)/);
+    if (!m) return null;
+    return (
+      <BentoCard pad={0} tone="none" style={{ boxShadow: "none" }}>
+        <iframe
+          title="Y.T.M. playlist"
+          src={"https://open.spotify.com/embed/playlist/" + m[1] + "?utm_source=generator"}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          style={{ display: "block", border: 0, borderRadius: "var(--tile-radius)" }}
+        ></iframe>
+      </BentoCard>
+    );
+  }
+
   Object.assign(window.YTMW, {
     GalleryTile, TitleTile, DescriptionTile, CapacityTile, AmenitiesTile,
     PracticalTile, CheckinTile, RulesTile, NearbyTile, RecommendTile,
-    AirbnbTile, BookingTile, LocationTile,
+    AirbnbTile, BookingTile, LocationTile, SpotifyEmbedTile,
   });
 })();

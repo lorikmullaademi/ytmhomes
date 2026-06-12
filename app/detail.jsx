@@ -10,37 +10,33 @@
   const W = window.YTMW;
   const Y = window.YTM;
 
-  // right-column grid tiles: [key, colSpan, rowSpan] on a ~76px row unit,
-  // ordered so 1-col neighbours pair up without holes
+  // right-column grid tiles: [key, colSpan, rowSpan] on a ~76px row unit.
+  // Every row holds tiles of equal height — boxes never stack unevenly.
   const GRID = [
-    ["booking", 1, 3],
-    ["nearby", 1, 3],
+    ["spotify", 1, 4],
+    ["nearby", 1, 4],
     ["amenities", 2, 3],
     ["practical", 2, 3],
     ["recommend", 1, 4],
     ["checkin", 1, 4],
     ["rules", 1, 3],
-    ["spotify", 1, 3],
     ["airbnb", 1, 3],
-    ["location", 1, 3],
-    ["quote", 2, 3],
+    ["location", 2, 3],
   ];
 
-  function PropertyDetail({ id, onBook }) {
+  function PropertyDetail({ id }) {
     const p = Y.byId[id];
     if (!p) return null;
     const content = {
-      booking: <W.BookingTile p={p} onBook={onBook} />,
+      spotify: <W.SpotifyEmbedTile />,
       nearby: <W.NearbyTile p={p} />,
       amenities: <W.AmenitiesTile p={p} />,
       practical: <W.PracticalTile p={p} />,
       recommend: <W.RecommendTile p={p} />,
       checkin: <W.CheckinTile p={p} />,
       rules: <W.RulesTile p={p} />,
-      spotify: <W.SpotifyTile />,
       airbnb: <W.AirbnbTile p={p} />,
       location: <W.LocationTile p={p} />,
-      quote: <W.QuoteTile review={p.review} />,
     };
     return (
       <div style={{ maxWidth: "var(--content-max)", margin: "0 auto", padding: "var(--page-pad)" }}>
@@ -49,6 +45,7 @@
           <div className="detail-left">
             <W.TitleTile p={p} />
             <W.DescriptionTile p={p} />
+            <W.QuoteTile review={p.review} />
           </div>
 
           {/* ---- right column · 2.5fr ---- */}
