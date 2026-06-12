@@ -10,18 +10,14 @@
   const W = window.YTMW;
   const Y = window.YTM;
 
-  // right-column grid tiles: [key, colSpan, rowSpan] on a ~76px row unit.
-  // Every row holds tiles of equal height — boxes never stack unevenly.
-  const GRID = [
-    ["spotify", 1, 4],
-    ["nearby", 1, 4],
-    ["amenities", 2, 3],
-    ["practical", 2, 3],
-    ["recommend", 1, 4],
-    ["checkin", 1, 4],
-    ["rules", 1, 3],
-    ["airbnb", 1, 3],
-    ["location", 2, 3],
+  // right-column rows: tiles in the same row stretch to the same height,
+  // and every row sizes itself to its content — nothing overlaps or clips
+  const ROWS = [
+    ["spotify", "nearby"],
+    ["amenities"],
+    ["practical"],
+    ["recommend", "checkin"],
+    ["rules", "airbnb"],
   ];
 
   function PropertyDetail({ id }) {
@@ -36,7 +32,6 @@
       checkin: <W.CheckinTile p={p} />,
       rules: <W.RulesTile p={p} />,
       airbnb: <W.AirbnbTile p={p} />,
-      location: <W.LocationTile p={p} />,
     };
     return (
       <div style={{ maxWidth: "var(--content-max)", margin: "0 auto", padding: "var(--page-pad)" }}>
@@ -46,18 +41,19 @@
             <W.TitleTile p={p} />
             <W.DescriptionTile p={p} />
             <W.QuoteTile review={p.review} />
+            <div className="detail-loc"><W.LocationTile p={p} /></div>
           </div>
 
           {/* ---- right column · 2.5fr ---- */}
           <div className="detail-right">
             <div className="detail-gallery"><W.GalleryTile p={p} /></div>
-            <div className="detail-cards">
-              {GRID.map(([k, c, r]) => (
-                <div key={k} style={{ gridColumn: "span " + c, gridRow: "span " + r, display: "flex", minWidth: 0 }}>
-                  {content[k]}
-                </div>
-              ))}
-            </div>
+            {ROWS.map((row, i) => (
+              <div key={i} className={"detail-row" + (row.length === 1 ? " full" : "")}>
+                {row.map((k) => (
+                  <div key={k} style={k === "spotify" ? { minHeight: 352 } : undefined}>{content[k]}</div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </div>
